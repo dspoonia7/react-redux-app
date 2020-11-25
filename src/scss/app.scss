@@ -74,6 +74,7 @@ body {
   .image-feed {
     width: 90%;
     margin: 2rem auto;
+    min-height: 400px;
 
     .grid {
       column-count: 3;
@@ -88,6 +89,8 @@ body {
       display: inline-block;
       box-sizing: border-box;
       background: #ebedef;
+      min-height: 10rem;
+      min-width: 10rem;
 
       img {
         max-width: 100%;

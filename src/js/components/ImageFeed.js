@@ -17,6 +17,31 @@ function ImageFeed() {
     loadImages();
   }, []);
 
+  const lazyLoadImages = () => {
+    const options = {
+      root: null, // viewport
+      threshold: 0,
+      rootMargin: '0'
+    };
+
+    const imageObserver = new IntersectionObserver((entries, imgObserver) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const lazyImage = entry.target;
+          // console.log('lazy loading ', lazyImage);
+          lazyImage.src = lazyImage.dataset.src;
+          lazyImage.classList.remove('lazy-img');
+          imgObserver.unobserve(lazyImage);
+        }
+      });
+    });
+
+    const list = document.querySelectorAll('img.lazy-img');
+    list.forEach((image) => {
+      imageObserver.observe(image);
+    });
+  };
+
   const loadImages = () => {
     fetch(`https://picsum.photos/v2/list?page=${page}&limit=${pageLimit}`)
       .then((response) => response.json())
@@ -30,6 +55,9 @@ function ImageFeed() {
         }
 
         setPage(page + 1);
+        setTimeout(() => {
+          lazyLoadImages();
+        }, 100);
       })
       .catch((error) => {
         console.error('Error: ', error);
