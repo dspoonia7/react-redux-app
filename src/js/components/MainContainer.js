@@ -7,7 +7,6 @@ function MainContainer() {
   return (
     <div className='app'>
       <MainNav />
-
       <ImageFeed />
     </div>
   );
