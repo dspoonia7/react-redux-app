@@ -16,7 +16,7 @@ function ImageFeed() {
       .then((data) => {
         setloading(false);
 
-        console.log('resp.data', data);
+        // console.log('resp.data', data);
         setImages(fromJS(data));
       })
       .catch((error) => {
@@ -33,16 +33,21 @@ function ImageFeed() {
       ) : error ? (
         <div className='flex-center main-error'>{error}</div>
       ) : (
-        <div style={{ padding: '2rem' }}>
-          {images.map((image) => (
-            <div key={image.get('id')}>
-              <img
-                src={image.get('download_url')}
-                alt={image.get('author')}
-                loading='lazy'
-              />
-            </div>
-          ))}
+        <div className='image-feed'>
+          <div
+            className='grid'
+            data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 160 }'
+          >
+            {images.map((image) => (
+              <div key={image.get('id')} className='grid-item'>
+                <img
+                  src={image.get('download_url')}
+                  alt={image.get('author')}
+                  loading='lazy'
+                />
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>
