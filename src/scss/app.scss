@@ -43,6 +43,26 @@ body {
       font-weight: bold;
     }
   }
+
+  .header-image {
+    width: 100%;
+
+    div {
+      height: 10rem;
+      box-shadow: 0 0 1em #ddd;
+      margin: 3rem 2rem 1rem;
+
+      @media only screen and (max-width: 499px) {
+        margin: 3rem 1rem 1rem;
+      }
+    }
+  }
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .main-container {
@@ -50,12 +70,6 @@ body {
   height: 100vh;
   width: 100%;
   overflow: scroll;
-
-  .flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
 
   .main-loader {
     height: 100%;
@@ -74,10 +88,10 @@ body {
   .image-feed {
     width: 90%;
     margin: 2rem auto;
-    min-height: 400px;
 
     .grid {
       column-count: 3;
+      min-height: 400px;
     }
 
     .grid-item {
@@ -110,7 +124,7 @@ body {
     }
 
     @media only screen and (max-width: 499px) {
-      width: 100%;
+      width: 95%;
     }
   }
 

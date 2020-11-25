@@ -55,9 +55,9 @@ function ImageFeed() {
         }
 
         setPage(page + 1);
-        // setTimeout(() => {
-        //   lazyLoadImages();
-        // }, 100);
+        setTimeout(() => {
+          lazyLoadImages();
+        }, 100);
       })
       .catch((error) => {
         console.error('Error: ', error);
@@ -79,6 +79,10 @@ function ImageFeed() {
 
   return (
     <div className='main-container'>
+      <div className='header-image'>
+        <div className='flex-center'>Header Image</div>
+      </div>
+
       {loading ? (
         <div className='flex-center main-loader'>Loading...</div>
       ) : error ? (
