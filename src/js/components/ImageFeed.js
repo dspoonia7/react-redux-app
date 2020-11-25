@@ -55,9 +55,9 @@ function ImageFeed() {
         }
 
         setPage(page + 1);
-        setTimeout(() => {
-          lazyLoadImages();
-        }, 100);
+        // setTimeout(() => {
+        //   lazyLoadImages();
+        // }, 100);
       })
       .catch((error) => {
         console.error('Error: ', error);
